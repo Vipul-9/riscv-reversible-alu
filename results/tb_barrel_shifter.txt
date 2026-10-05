@@ -1,0 +1,27 @@
+============================================================
+  32-Bit Barrel Shifter — Component Test Suite
+============================================================
+
+--- SLL: All shifts (data=0x00000001) ---
+VCD info: dumpfile tb_barrel_shifter.vcd opened for output.
+--- SLL: All shifts (data=0xDEADBEEF) ---
+
+--- SRL: All shifts (data=0x80000000) ---
+--- SRL: All shifts (data=0xDEADBEEF) ---
+
+--- SRA: All shifts (negative: 0x80000000) ---
+--- SRA: All shifts (positive: 0x7FFFFFFF) ---
+
+--- SRA: Sign extension cases ---
+
+--- Random SLL (500) ---
+--- Random SRL (500) ---
+--- Random SRA (500) ---
+
+============================================================
+  BARREL SHIFTER TEST SUMMARY
+  Total: 1696 | Pass: 1696 | Fail: 0
+  *** ALL TESTS PASSED ***
+============================================================
+
+tb/tb_barrel_shifter.v:121: $finish called at 169600000 (1ps)

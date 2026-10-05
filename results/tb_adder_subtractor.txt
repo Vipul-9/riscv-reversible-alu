@@ -1,0 +1,28 @@
+============================================================
+  32-Bit Adder/Subtractor — Component Test Suite
+============================================================
+
+--- ADD Tests ---
+VCD info: dumpfile tb_adder_subtractor.vcd opened for output.
+
+--- SUB Tests ---
+
+--- Carry Propagation Tests ---
+
+--- B Complement Path Verification ---
+  PASS: ADD mode — b_xor == b (no complement)
+  PASS: SUB mode — b_xor == ~b (complemented)
+
+--- Garbage Consistency Check ---
+  PASS: Garbage outputs are deterministic
+
+--- Random ADD Tests (500 vectors) ---
+--- Random SUB Tests (500 vectors) ---
+
+============================================================
+  ADDER/SUBTRACTOR TEST SUMMARY
+  Total: 1022 | Pass: 1022 | Fail: 0
+  *** ALL TESTS PASSED ***
+============================================================
+
+tb/tb_adder_subtractor.v:214: $finish called at 102350000 (1ps)

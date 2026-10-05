@@ -1,0 +1,29 @@
+============================================================
+  32-Bit RISC-V Reversible ALU — Integration Test Suite
+============================================================
+
+--- ADD Tests ---
+VCD info: dumpfile alu_tb.vcd opened for output.
+--- SUB Tests ---
+--- AND Tests ---
+--- OR Tests ---
+--- XOR Tests ---
+--- SLL Tests ---
+--- SRL Tests ---
+--- SRA Tests ---
+--- SLT Tests ---
+--- SLTU Tests ---
+
+--- Random Tests (1000 vectors) ---
+
+--- CRC Error Detection Test ---
+  ADD: A=0x12345678 B=0x00000001 Result=0x12345679 CRC=0x1b Error=0
+  PASS: No false error detected
+
+============================================================
+  TEST SUMMARY
+  Total: 1041 | Pass: 1041 | Fail: 0
+  *** ALL TESTS PASSED ***
+============================================================
+
+tb/tb_alu_32bit.v:258: $finish called at 104200000 (1ps)

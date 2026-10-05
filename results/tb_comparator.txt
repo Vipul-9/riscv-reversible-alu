@@ -1,0 +1,19 @@
+============================================================
+  Reversible Comparator (SLT/SLTU) — Component Test Suite
+============================================================
+
+--- SLT (Signed) Tests ---
+VCD info: dumpfile tb_comparator.vcd opened for output.
+
+--- SLTU (Unsigned) Tests ---
+
+--- Random SLT (500 vectors) ---
+--- Random SLTU (500 vectors) ---
+
+============================================================
+  COMPARATOR TEST SUMMARY
+  Total: 1022 | Pass: 1022 | Fail: 0
+  *** ALL TESTS PASSED ***
+============================================================
+
+tb/tb_comparator.v:137: $finish called at 102200000 (1ps)

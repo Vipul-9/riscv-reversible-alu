@@ -1,0 +1,47 @@
+
+=== Feynman Gate Test ===
+  Input: 00  Output: 00
+  Input: 01  Output: 01
+  Input: 10  Output: 11
+  Input: 11  Output: 10
+  PASS: All outputs unique (bijective)
+
+=== Toffoli Gate Test ===
+  Input: 000  Output: 000
+  Input: 001  Output: 001
+  Input: 010  Output: 010
+  Input: 011  Output: 011
+  Input: 100  Output: 100
+  Input: 101  Output: 101
+  Input: 110  Output: 111
+  Input: 111  Output: 110
+  PASS: All outputs unique (bijective)
+
+=== Fredkin Gate Test ===
+  Input: 000  Output: 000
+  Input: 001  Output: 001
+  Input: 010  Output: 010
+  Input: 011  Output: 011
+  Input: 100  Output: 100
+  Input: 101  Output: 110
+  Input: 110  Output: 101
+  Input: 111  Output: 111
+  PASS: All outputs unique (bijective)
+
+=== Peres Gate Test ===
+  Input: 000  Output: 000
+  Input: 001  Output: 001
+  Input: 010  Output: 010
+  Input: 011  Output: 011
+  Input: 100  Output: 110
+  Input: 101  Output: 111
+  Input: 110  Output: 101
+  Input: 111  Output: 100
+  PASS: All outputs unique (bijective)
+  Verifying Peres as full-adder component...
+
+========================================
+Gate Tests Complete: 4 PASS, 0 FAIL
+========================================
+
+tb/tb_gates.v:157: $finish called at 280000 (1ps)

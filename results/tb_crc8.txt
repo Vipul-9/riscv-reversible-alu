@@ -1,0 +1,32 @@
+============================================================
+  CRC-8 Error Detection - Component Test Suite
+============================================================
+
+--- CRC Properties ---
+VCD info: dumpfile tb_crc8.vcd opened for output.
+  CRC(0x00000000) = 0x00
+  CRC(0x00000001) = 0x07
+
+--- CRC Uniqueness (collision check for 256 values) ---
+  Collisions among first 256 values: 0 (some expected for 8-bit CRC)
+  PASS: Collision rate acceptable
+
+--- Single Bit Flip Detection ---
+  Original CRC(0xA5A55A5A) = 0x36
+  Detected 32/32 single-bit flips via CRC change
+  PASS: All single-bit errors detected
+
+--- Re-verification: No Error ---
+  Ref=Recomp -> error_flag=0
+
+--- Re-verification: Error Detected ---
+  Ref!=Recomp (1-bit diff) -> error_flag=1
+  Ref!=Recomp (large diff) -> error_flag=1
+
+============================================================
+  CRC-8 TEST SUMMARY
+  Total: 9 | Pass: 9 | Fail: 0
+  *** ALL TESTS PASSED ***
+============================================================
+
+tb/tb_crc8.v:169: $finish called at 15150000 (1ps)

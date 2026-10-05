@@ -1,0 +1,103 @@
+============================================================
+  Fault Injection - CRC Error Detection Test Suite
+============================================================
+
+--- Part 1: Fault-Free Operation ---
+  Testing ADD...
+VCD info: dumpfile tb_fault_injection.vcd opened for output.
+  Testing SUB...
+  Testing AND...
+  Testing OR...
+  Testing XOR...
+  Testing SLL...
+  Testing SRL...
+  Testing SRA...
+  Testing SLT...
+  Testing SLTU...
+
+  Random fault-free tests (100 vectors)...
+
+--- Part 2: CRC Signature Variation ---
+  ADD     : Result=0x1234567c CRC=0x00 Error=0
+  SUB     : Result=0x12345674 CRC=0x38 Error=0
+  AND     : Result=0x00000000 CRC=0x00 Error=0
+  OR      : Result=0x1234567c CRC=0x00 Error=0
+  XOR     : Result=0x1234567c CRC=0x00 Error=0
+  SLL     : Result=0x23456780 CRC=0xa5 Error=0
+  SRL     : Result=0x01234567 CRC=0xc0 Error=0
+  SRA     : Result=0x01234567 CRC=0xc0 Error=0
+  SLT     : Result=0x00000000 CRC=0x00 Error=0
+  SLTU    : Result=0x00000000 CRC=0x00 Error=0
+  CRC variation count: 30 (higher = better discrimination)
+
+--- Part 3: Arithmetic Re-computation Verification ---
+  ADD/SUB re-computation: 200/200 passed (error_flag=0)
+  PASS: All arithmetic re-computations verified
+
+--- Part 4: Single-Bit Fault Injection ---
+  Flipping individual bits of arith_result...
+
+  [ADD] Fixed inputs, sweeping bit positions:
+
+  [SUB] Fixed inputs, key bit positions:
+
+  [ADD] Random inputs, all 32 bit positions:
+
+  Single-bit fault detection: 40 detected, 0 missed
+
+--- Part 5: Multi-Bit Fault Injection ---
+  [ADD] Structured multi-bit fault patterns:
+
+  [ADD] Random multi-bit faults (50 vectors):
+
+  [SUB] Random multi-bit faults (50 vectors):
+
+--- Part 6: Stuck-At Fault Injection ---
+  Stuck-at-0 faults:
+  PASS: SA-0 on bit 0 detected (A=0x12345678 B=0x00000001)
+  PASS: SA-0 on bit 0 detected (A=0xffffffff B=0x00000000)
+  PASS: SA-0 on bit 15 detected (A=0xffffffff B=0x00000000)
+  PASS: SA-0 on bit 31 detected (A=0xffffffff B=0x00000000)
+
+  Stuck-at-1 faults:
+  PASS: SA-1 on bit 0 detected (A=0x00000000 B=0x00000000)
+  PASS: SA-1 on bit 15 detected (A=0x00000000 B=0x00000000)
+  PASS: SA-1 on bit 31 detected (A=0x00000000 B=0x00000000)
+  PASS: SA-1 on bit 31 detected (A=0x12345678 B=0x00000001)
+
+--- Part 7: Internal Carry Chain Fault Injection ---
+  Corrupting carry bits inside the adder...
+  PASS: Carry[1] fault detected
+  PASS: Carry[8] fault detected
+  PASS: Carry[16] fault detected
+  PASS: Carry[24] fault detected
+  PASS: Carry[31] fault detected
+
+--- Part 8: Post-MUX Fault (Detection Boundary) ---
+  Corrupting final 'result' AFTER the output mux...
+  (Re-computation uses arith_result, not result,
+   so post-mux faults are outside detection scope)
+
+  EXPECTED: Post-mux fault NOT detected (error_flag=0)
+           Result corrupted: 0x12345679 -> 0x12345678
+           But arith_result unchanged, so re-computation matches A
+  --> This demonstrates the detection boundary:
+      Faults BEFORE re-computation tap = DETECTED
+      Faults AFTER  re-computation tap = NOT detected by re-computation
+      (CRC signature will still differ, but error_flag relies on re-computation)
+
+============================================================
+  FAULT INJECTION TEST SUMMARY
+============================================================
+  Total Tests:    275
+  Passed:         275
+  Failed:         0
+  ---
+  Faults Injected & Detected: 160
+  Faults Injected & Missed:   0
+  Detection Rate: 100% (all injected faults caught!)
+  ---
+  *** ALL TESTS PASSED ***
+============================================================
+
+tb/tb_fault_injection.v:545: $finish called at 162800000 (1ps)
